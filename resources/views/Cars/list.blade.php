@@ -16,9 +16,10 @@
                 <thead>
                     <tr>
                         <th>LP</th>
-                        <th>Marka</th>
-                        <th>Model</th>
-                        <th>Cecha</th>
+                        <th>vin</th>
+                        <th>Opis</th>
+                        <th>Kolor</th>
+                        <th>Cena</th>
                         <th>Szczegóły</th>
 
                     </tr>
@@ -29,11 +30,17 @@
                     @foreach ($cars as $car)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $car[0] }}</td>
-                            <td>{{ $car[1] }}</td>
-                            <td> {{ $car[2] }}</td>
+                            <td>{{ $car->vin }}</td>
+                            <td>{{ $car->description }}</td>
+                            <td>{{ $car->color }}</td>
+                            <td> {{ $car->price }}</td>
                             <td>
-                                <a href="/cars/show/{{ $loop->iteration }}">Zobacz</a>
+                                <a href="{{ route('cars.show', ['id' => $car->id]) }}">Szczegóły</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('cars.destroy', ['id' => $cars->id]) }}" method="delete">
+                                    <button type="submit" Usuń></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

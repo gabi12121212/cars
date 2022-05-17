@@ -17,11 +17,12 @@ use App\Http\Controllers\Cars\CarController;
 |
 */
 
-Route::get('/ok', function () {
-    return view('welcome');
+Route::group(['prefix' => '/cars/', 'as' => 'cars.'], function () {
+
+    Route::get('/cars/list', [Carscontroller::class, 'list'])->name('list');
+
+    Route::get('/cars/show/{id}', [Carcontroller::class, 'show'])->name('show');
+    Route::delete('destroy/{id}', [Carcontroller::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/home', [HomeController::class, 'homePage']);
-
-Route::get('/cars/list', [Carscontroller::class, 'list']);
-Route::get('/cars/show/{id}', [Carcontroller::class, 'show']);
+Route::get('/{any}', [HomeController::class, 'homePage'])->where('any', '.*');
