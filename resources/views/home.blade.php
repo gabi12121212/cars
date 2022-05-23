@@ -14,6 +14,12 @@
         <ul>
             <li><a href="{{ route('cars.list') }}">samochody</a></li>
         </ul>
+        <ul>
+            <li><a href="{{ route('brands.list') }}">marki</a></li>
+        </ul>
+        <ul>
+            <li><a href="{{ route('models.list') }}">modele</a></li>
+        </ul>
     </div>
 </body>
 

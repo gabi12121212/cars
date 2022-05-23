@@ -12,6 +12,31 @@
     <div class="conteiner">
         <h3>Samochody</h3>
         <div class="cars">
+            <div class="flirts">
+                <form action="{{ route('cars.list') }}" method="get">
+                    <div>
+                        <label for="vin">Vin</label>
+                        <input type="text" name="vin" id="vin">
+                    </div>
+                    <div>
+                        <label for="color">Kolor</label>
+                        <input type="text" name="color" id="color">
+                    </div>
+                    <div>
+                        <label for="minPrice">minPrice</label>
+                        <input type="text" name="minPrice" id="minPrice">
+                    </div>
+                    <div>
+                        <label for="description">Opis</label>
+                        <input type="text" name="description" id="description">
+                    </div>
+                    <div>
+                        <button type="submit">Filtruj</button>
+                    </div>
+
+
+                </form>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -38,8 +63,8 @@
                                 <a href="{{ route('cars.show', ['id' => $car->id]) }}">Szczegóły</a>
                             </td>
                             <td>
-                                <form action="{{ route('cars.destroy', ['id' => $cars->id]) }}" method="delete">
-                                    <button type="submit" Usuń></button>
+                                <form action="{{ route('cars.destroy', ['id' => $car->id]) }}" method="delete">
+                                    <button type="submit">Usuń</button>
                                 </form>
                             </td>
                         </tr>
